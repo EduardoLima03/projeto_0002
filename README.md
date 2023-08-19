@@ -8,7 +8,7 @@ Programa para criar mapa de deposito, o usurio ira informar os dados com rua, bl
 </h4>
 
 ### Features
-- [ ] Gerar Qrcode
+- [x] Gerar Qrcode
 - [ ] Gerar Pdf
 - [ ] Gerar Etiqueta
 - [ ] imprimir Etiqueta
