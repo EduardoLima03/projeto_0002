@@ -9,8 +9,9 @@ class CompactHomePage extends StatefulWidget {
 }
 
 class _CompactHomePageState extends State<CompactHomePage> {
-  HomeControllers _controllers = HomeControllers();
+  final HomeControllers _controllers = HomeControllers();
   final GlobalKey<FormState> _key = GlobalKey();
+  final TextEditingController _depositControler = TextEditingController();
   final TextEditingController _streetsControler = TextEditingController();
   final TextEditingController _buildingsControler = TextEditingController();
   final TextEditingController _storeyControler = TextEditingController();
@@ -33,6 +34,16 @@ class _CompactHomePageState extends State<CompactHomePage> {
         key: _key,
         child: Column(
           children: [
+            TextFormField(
+              keyboardType: TextInputType.number,
+              controller: _depositControler,
+              decoration: const InputDecoration(
+                labelText: 'Deposito',
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             TextFormField(
               keyboardType: TextInputType.number,
               controller: _streetsControler,
@@ -64,9 +75,10 @@ class _CompactHomePageState extends State<CompactHomePage> {
               controller: _flatsControler,
               decoration: const InputDecoration(labelText: 'Apartamentos'),
               validator: (value) {
-                if (value.length == 0) {
+                if (value == null) {
                   return 'Digite valores numericos';
                 }
+                return '';
               },
             ),
             const SizedBox(

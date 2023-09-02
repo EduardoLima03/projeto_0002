@@ -5,7 +5,8 @@ class HomeControllers {
 
   /// Retorna uma lista de com Qrcode.
   List<BarcodeWidget> gerarQrcodes(
-      {required int quantidadeRua,
+      {required int quantidadeDeposito,
+      required int quantidadeRua,
       required int quantidadeBloco,
       required int quantidadeNivel,
       required int quantidadeApartamento}) {
@@ -20,24 +21,30 @@ class HomeControllers {
      */
     List<BarcodeWidget> qrcodes = [];
 
-    for (var i = 1; i <= quantidadeRua; i++) {
-      for (var j = 1; j <= quantidadeBloco; j++) {
-        for (var n = 1; n <= quantidadeNivel; n++) {
-          for (var a = 1; a <= quantidadeApartamento; a++) {
-            /*BarcodeWidget(
+    for (var d = 1; d <= quantidadeDeposito; d++) {
+      for (var i = 1; i <= quantidadeRua; i++) {
+        for (var j = 1; j <= quantidadeBloco; j++) {
+          for (var n = 1; n <= quantidadeNivel; n++) {
+            for (var a = 1; a <= quantidadeApartamento; a++) {
+              /*BarcodeWidget(
               barcode: Barcode.qrCode(),
               data: '{"rua": $i, "bloco": $j, "nivel": $n, "apartamento": $a}',
-            );*/
-            qrcodes.add(BarcodeWidget(
-              barcode: Barcode.qrCode(),
-              width: 200,
-              height: 200,
-              data: '{"rua": $i, "bloco": $j, "nivel": $n, "apartamento": $a}',
-            ));
+              );*/
+              qrcodes.add(BarcodeWidget(
+                barcode: Barcode.qrCode(),
+                width: 200,
+                height: 200,
+                data:
+                    '{"deposito" : $d,"rua": $i, "bloco": $j, "nivel": $n, "apartamento": $a}',
+              ));
+            }
           }
         }
       }
     }
+
     return qrcodes;
   }
+
+  geraEtiqueta() {}
 }

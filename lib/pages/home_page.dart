@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
       body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
         if (constraints.maxWidth < 600) {
-          return CompactHomePage();
+          return const CompactHomePage();
         } else if ((constraints.maxWidth >= 600) &&
             (constraints.maxWidth < 840)) {
           return const Text("Medium");
