@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:barcode_widget/barcode_widget.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 class HomeControllers {
   HomeControllers();
@@ -46,5 +50,15 @@ class HomeControllers {
     return qrcodes;
   }
 
-  geraEtiqueta() {}
+  geraEtiqueta() async {
+    final pdf = pw.Document();
+    pdf.addPage(pw.Page(build: (pw.Context context) {
+      return pw.Center(
+          child:
+              pw.Text('Hello Word', style: const pw.TextStyle(fontSize: 100)));
+    }));
+
+    final file = File("example.pdf");
+    await file.writeAsBytes(await pdf.save());
+  }
 }
